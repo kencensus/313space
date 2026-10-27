@@ -22,6 +22,12 @@
       '<span class="prof-rate-q">Good match?</span> ' + btn("yes", "Yes") + ' ' + btn("no", "No") + '</div>';
   }
 
+  /* Shareable link to this profile: works on github.io now and on 313space.org later (file:// has origin "null"). */
+  function profileURL(id) {
+    var base = location.origin && location.origin !== "null" ? location.origin + location.pathname : location.href.split("#")[0];
+    return base + "#/b/" + encodeURIComponent(id);
+  }
+
   Pages.profile = function (app, params) {
     var id = params && params.id;
     var b = id ? Data.byId(id) : null;
@@ -73,7 +79,7 @@
 
       '<div class="prof-urlbox">' +
         '<b>' + name + '&rsquo;s 313Space URL:</b><br>' +
-        '<span class="prof-url">http://www.313space.com/' + esc(b.id) + '</span>' +
+        '<a class="prof-url" href="' + esc(profileURL(b.id)) + '">313space.org/' + esc(b.id) + '</a>' +
       '</div>' +
 
       '<div class="box prof-interests">' +
