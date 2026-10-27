@@ -7,17 +7,20 @@
     return (window.performance && typeof performance.now === "function") ? performance.now() : Date.now();
   }
 
+  var STOP = { the: 1, and: 1, for: 1, with: 1, you: 1, are: 1, any: 1, some: 1, somewhere: 1, something: 1, place: 1, spot: 1,
+    eat: 1, want: 1, like: 1, that: 1, this: 1, can: 1, get: 1, has: 1, have: 1, near: 1, good: 1, great: 1, really: 1, very: 1, just: 1 };
+
   function words(text) {
     return String(text || "").toLowerCase().replace(/[^a-z0-9\s]/g, " ").split(/\s+/).filter(function (w) {
-      return w.length >= 3;
+      return w.length >= 3 && !STOP[w];
     });
   }
 
-  /* A free-text word matches a tag if the tag contains the word or the word equals a word of the tag. */
+  /* A free-text word matches a tag if it equals a word of the tag (or is a 4+ letter prefix of one, e.g. "veg" no, "vegan" yes). */
   function wordMatchesTag(word, tag) {
-    tag = String(tag).toLowerCase();
-    if (tag.indexOf(word) !== -1) return true;
-    return tag.split(/[^a-z0-9]+/).some(function (tw) { return tw === word; });
+    return String(tag).toLowerCase().split(/[^a-z0-9]+/).some(function (tw) {
+      return tw === word || (word.length >= 4 && tw.indexOf(word) === 0);
+    });
   }
 
   function scoreAll(answers) {

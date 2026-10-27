@@ -109,7 +109,7 @@
             '<td class="prof-c-right">' +
               '<div class="prof-c-date">' + esc(today) + '</div>' +
               '<div class="prof-c-text">' + esc(f.why) + '</div>' +
-              rateButtonsHTML(fb.id, Store.getRating(b.id, fb.id)) +
+              rateButtonsHTML(fb.id, Store.getRating(b.id, fb.id, top8.source)) +
             '</td>' +
           '</tr></tbody></table>';
         }).join("")

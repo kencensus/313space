@@ -11,15 +11,15 @@ No build step, no backend, no API keys.
 
 Routes (hash-based): `#/` home · `#/browse` · `#/search?q=cozy` · `#/quiz` · `#/b/<id>` profile · `#/edit/<id>` owner mode · `#/impact` KPI dashboard.
 
-## Swapping in the real data
+## Data
 
-All business content comes from `data/businesses.js` (`window.BUSINESSES` + `window.DIRECTORY_META`). The file in the repo has 3 **placeholder** entries ("Example Business A/B/C"). Drop in the verified Detroit file with the same schema and nothing else needs to change. Top 8 size is `min(8, number of businesses - 1)`, so the placeholder file shows 2 friends per profile. The real file shows 8.
+All business content comes from `data/businesses.js` (`window.BUSINESSES` + `window.DIRECTORY_META`). It has 21 verified, currently open Detroit businesses across 11 neighborhoods, each with a `source` link showing where it was verified. The app never invents businesses, facts or links. Top 8 size is `min(8, number of businesses - 1)`, so a smaller or larger file drops in without code changes.
 
-After dropping it in, run `node scripts/validate-data.js`. It checks for unique ids, required fields, exactly 8 valid Top 8 friends per business, http(s) sources, and at least 3 appearances per business in other Top 8s.
+After editing the data, run `node scripts/validate-data.js`. It checks for unique ids, required fields, exactly 8 valid Top 8 friends per business, http(s) sources, and the minimum appearances per business in other Top 8s.
 
 ## How AI was used
 
-- **Ahead of time, not at runtime.** Claude (Anthropic) wrote each business's headline, mood, "About me" and "Who I'd like to meet" from the verified facts in the data file. Claude also generated an AI-suggested Top 8 for every business, balanced so each business appears in at least 3 other Top 8s (`DIRECTORY_META.minAppearances`).
+- **Ahead of time, not at runtime.** Claude (Anthropic) wrote each business's headline, mood, "About me" and "Who I'd like to meet" from the verified facts in the data file. Claude also generated an AI-suggested Top 8 for every business, balanced so each business appears in at least 5 other Top 8s (`DIRECTORY_META.minAppearances`).
 - **Owners stay in control.** In owner mode (`#/edit/<id>`) an owner can review the AI picks or pick from scratch. Their picks replace the AI's, and profiles show a "Top 8 picked by the owner" or "Top 8 suggested by AI" badge.
 - **The app makes no live AI calls.** The quiz is a transparent scoring function: +3 category, +2 per tag, +1 neighborhood, −2 over budget.
 - Claude Code also helped build the app itself, using parallel agents.
@@ -43,3 +43,5 @@ Every number on the page is labeled **MEASURED** (computed live from this device
 - When an owner picks a business the AI didn't suggest, its Friends Comment reads "Hand-picked by the owner of …" instead of inventing a reason.
 - "Reset test data" also clears owner Top 8 overrides, so each KPI session starts clean.
 - Quiz timer starts when the quiz page renders and stops when results show.
+- "Good match?" ratings are stored per page load. Several testers sharing one device don't overwrite each other, and changing your vote within a visit replaces it. The Impact page ignores stored data for businesses that aren't in the current data file.
+- Quiz free text matches whole tag words only (e.g. "vegan" or "cozy"), and filler words like "and" or "for" are ignored.

@@ -1,6 +1,6 @@
 // Validates data/businesses.js against the 313Space schema.  Usage: node scripts/validate-data.js
 const fs = require("fs"), path = require("path"), vm = require("vm");
-const file = path.join(__dirname, "..", "data", "businesses.js");
+const file = process.argv[2] ? path.resolve(process.argv[2]) : path.join(__dirname, "..", "data", "businesses.js");
 const ctx = { window: {} };
 vm.runInNewContext(fs.readFileSync(file, "utf8"), ctx, { filename: file });
 const list = ctx.window.BUSINESSES || [];

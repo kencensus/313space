@@ -42,16 +42,19 @@
   }
   function getAllOwnerTop8() { return get("ownerTop8", {}) || {}; }
 
-  /* ---- "Good match?" ratings: { "bizId>friendId": {value:'yes'|'no', source:'ai'|'owner', at} } ---- */
-  function ratingKey(bizId, friendId) { return bizId + ">" + friendId; }
+  /* ---- "Good match?" ratings: { "<visit>|bizId>friendId>source": {biz, friend, value:'yes'|'no', source:'ai'|'owner', at} } ---- */
+  /* Keyed per page-load "visit" so several KPI testers sharing one device don't overwrite each other;
+     a tester changing their mind within a visit replaces their own vote. */
+  var VISIT = Date.now().toString(36) + "-" + Math.floor(Math.random() * 1e9).toString(36);
+  function ratingKey(bizId, friendId, source) { return VISIT + "|" + bizId + ">" + friendId + ">" + (source || "ai"); }
   function getRatings() { return get("ratings", {}) || {}; }
-  function getRating(bizId, friendId) {
-    var r = getRatings()[ratingKey(bizId, friendId)];
+  function getRating(bizId, friendId, source) {
+    var r = getRatings()[ratingKey(bizId, friendId, source)];
     return r ? r.value : null;
   }
   function setRating(bizId, friendId, value, source) {
     var all = getRatings();
-    all[ratingKey(bizId, friendId)] = { value: value, source: source || "ai", at: Date.now() };
+    all[ratingKey(bizId, friendId, source)] = { biz: bizId, friend: friendId, value: value, source: source || "ai", at: Date.now() };
     set("ratings", all);
   }
 

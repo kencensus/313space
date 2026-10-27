@@ -1,6 +1,8 @@
 /* 313Space — data helpers over window.BUSINESSES (read-only) + owner overrides from Store. */
 (function () {
-  var LIST = Array.isArray(window.BUSINESSES) ? window.BUSINESSES : [];
+  /* global BUSINESSES */
+  var LIST = Array.isArray(window.BUSINESSES) ? window.BUSINESSES
+    : (typeof BUSINESSES !== "undefined" && Array.isArray(BUSINESSES) ? BUSINESSES : []);
   var BY_ID = {};
   LIST.forEach(function (b) { if (b && b.id) BY_ID[b.id] = b; });
 
@@ -16,7 +18,7 @@
   function count() { return LIST.length; }
 
   function initials(name) {
-    var words = String(name || "?").replace(/[^A-Za-z0-9& ]/g, " ").split(/\s+/).filter(function (w) {
+    var words = String(name || "?").replace(/['\u2019]/g, "").replace(/[^A-Za-z0-9& ]/g, " ").split(/\s+/).filter(function (w) {
       return w && !/^(the|of|and|a|an|&)$/i.test(w);
     });
     if (!words.length) return "?";
@@ -47,6 +49,8 @@
 
   /* Effective Top 8 for a business: owner override (if saved) else AI top8.
      Returns { source: 'owner'|'ai', list: [{id, why}] } — only ids that exist in the data. */
+  function dedupe(ids) { var seen = {}; return (ids || []).filter(function (x) { if (!x || seen[x]) return false; seen[x] = 1; return true; }); }
+
   function top8For(id) {
     var b = BY_ID[id];
     if (!b) return { source: "ai", list: [] };
@@ -56,16 +60,20 @@
     if (owner && owner.length) {
       return {
         source: "owner",
-        list: owner.filter(function (fid) { return BY_ID[fid] && fid !== id; }).map(function (fid) {
+        list: dedupe(owner).filter(function (fid) { return BY_ID[fid] && fid !== id; }).map(function (fid) {
           return { id: fid, why: aiWhy[fid] || ("Hand-picked by the owner of " + b.name + " as a Top 8 friend.") };
         })
       };
     }
-    return { source: "ai", list: (b.top8 || []).filter(function (f) { return f && BY_ID[f.id] && f.id !== id; }) };
+    var seen = {};
+    return { source: "ai", list: (b.top8 || []).filter(function (f) {
+      if (!f || !BY_ID[f.id] || f.id === id || seen[f.id]) return false;
+      seen[f.id] = 1; return true;
+    }) };
   }
   function aiTop8Ids(id) {
     var b = BY_ID[id];
-    return b ? (b.top8 || []).map(function (f) { return f.id; }).filter(function (fid) { return BY_ID[fid] && fid !== id; }) : [];
+    return b ? dedupe((b.top8 || []).map(function (f) { return f && f.id; })).filter(function (fid) { return BY_ID[fid] && fid !== id; }) : [];
   }
   /* How many friends a Top 8 should have (8, or fewer if the directory is tiny). */
   function top8Size() { return Math.min(8, Math.max(0, LIST.length - 1)); }
@@ -118,6 +126,6 @@
     profileHref: profileHref, editHref: editHref, picHTML: picHTML, tileHTML: tileHTML,
     top8For: top8For, aiTop8Ids: aiTop8Ids, top8Size: top8Size, appearances: appearances, friendedBy: friendedBy,
     categories: categories, neighborhoods: neighborhoods, topTags: topTags, priceLevel: priceLevel,
-    search: search, todayStr: todayStr, meta: window.DIRECTORY_META || {}
+    search: search, todayStr: todayStr, meta: window.DIRECTORY_META || (typeof DIRECTORY_META !== "undefined" ? DIRECTORY_META : {}) || {}
   };
 })();

@@ -16,7 +16,7 @@
   function f1(x) { return x == null || !isFinite(x) ? DASH : x.toFixed(1); }
 
   function compute() {
-    var timings = Store.getEditTimings();
+    var timings = Store.getEditTimings().filter(function (t) { return t && Data.byId(t.businessId); });
     var scratch = timings.filter(function (t) { return t && t.mode === "scratch"; }).map(function (t) { return Number(t.seconds); });
     var review = timings.filter(function (t) { return t && t.mode === "review"; }).map(function (t) { return Number(t.seconds); });
     var avgS = avg(scratch), avgR = avg(review);
@@ -27,7 +27,7 @@
     var aiYes = 0, aiNo = 0, ownYes = 0, ownNo = 0;
     Object.keys(ratings).forEach(function (k) {
       var r = ratings[k];
-      if (!r) return;
+      if (!r || !Data.byId(r.biz) || !Data.byId(r.friend)) return;
       if (r.source === "owner") { if (r.value === "yes") ownYes++; else if (r.value === "no") ownNo++; }
       else if (r.source === "ai") { if (r.value === "yes") aiYes++; else if (r.value === "no") aiNo++; }
     });
@@ -47,7 +47,7 @@
       return Data.byId(k) && Array.isArray(owners[k]) && owners[k].length;
     }).length;
 
-    var quiz = Store.getQuizTimings().map(function (q) { return Number(q && q.seconds); });
+    var quiz = Store.getQuizTimings().filter(function (q) { return q && (!q.matchId || Data.byId(q.matchId)); }).map(function (q) { return Number(q && q.seconds); });
     var avgQuiz = avg(quiz);
 
     var perBiz = bizCount ? links / bizCount : null;
