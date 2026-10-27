@@ -1,0 +1,88 @@
+/* 313Space — Profile page styles (Agent A). Every selector is prefixed with .profile. */
+.profile { font-size: 11px; }
+.profile .prof-name { font-size: 22px; line-height: 1.15; margin: 0 0 6px; overflow-wrap: anywhere; }
+.profile .prof-red { color: red; }
+
+/* Pic + details block */
+.profile .prof-picbox { display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-start; margin: 0 0 8px; }
+.profile .prof-pic { flex: 0 0 auto; }
+.profile .prof-pic .pic-lg { width: 150px; height: 150px; }
+.profile .prof-pic .pic-lg .pic-initials { font-size: 50px; }
+.profile .prof-details { flex: 1 1 100px; min-width: 100px; font-size: 11px; display: flex; flex-direction: column; gap: 5px; overflow-wrap: anywhere; }
+.profile .prof-headline { font-style: italic; font-weight: bold; }
+.profile .prof-viewmy { margin: 0 0 8px; font-size: 11px; }
+.profile .prof-viewmy a { text-decoration: underline; }
+
+/* Contacting box */
+.profile .prof-contact { border: 1px solid #6699CC; margin: 0 0 10px; background: #fff; }
+.profile .prof-contact-head { background: #D5E8FB; color: #003399; font-weight: bold; padding: 3px 6px; font-size: 11px; border-bottom: 1px solid #6699CC; }
+.profile .prof-contact-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 6px; padding: 6px; }
+.profile .prof-act {
+  display: flex; align-items: center; gap: 4px; background: none; border: 0; padding: 2px 0; margin: 0;
+  font: bold 11px Verdana, Arial, Helvetica, sans-serif; color: #003399; cursor: pointer; text-align: left;
+}
+.profile .prof-act:hover, .profile .prof-act:focus-visible { text-decoration: underline; }
+.profile .prof-ico {
+  flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px;
+  font-size: 11px; line-height: 1; color: #fff; border: 1px solid #000; border-radius: 2px; text-decoration: none;
+}
+.profile .prof-ico-add { background: #33CC33; font-weight: bold; }
+.profile .prof-ico-msg { background: #6699CC; }
+.profile .prof-ico-fav { background: #FF9900; }
+.profile .prof-ico-fwd { background: #CC0066; font-weight: bold; }
+
+/* URL box */
+.profile .prof-urlbox { border: 1px solid #6699CC; padding: 5px 6px; margin: 0 0 10px; font-size: 11px; overflow-wrap: anywhere; }
+.profile .prof-url { font-size: 11px; }
+
+/* Interests */
+.profile .prof-interests table.mys .lbl { width: 1%; white-space: nowrap; overflow-wrap: normal; word-break: normal; }
+.profile .prof-interests table.mys td { overflow-wrap: anywhere; }
+
+/* Owner box */
+.profile .prof-owner-box { border: 1px dashed #6699CC; background: #F5F9FF; padding: 6px; margin: 0 0 10px; font-size: 11px; }
+.profile .prof-owner-box a { font-weight: bold; text-decoration: underline; }
+
+/* Extended network */
+.profile .prof-extended { border: 1px solid #000; padding: 10px 8px; margin: 0 0 10px; font-size: 15px; line-height: 1.25; overflow-wrap: anywhere; }
+
+/* Blurbs */
+.profile .prof-blurbs p { margin: 0 0 8px; }
+.profile .prof-ai-note { margin: 0; }
+
+/* Friend Space */
+.profile .prof-fs-badge { margin: 2px 0 6px; }
+.profile .prof-fs-count { margin: 0 0 6px; font-size: 12px; }
+.profile .prof-fs-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px 6px; margin: 0 0 8px; }
+.profile .prof-fs-cell { min-width: 0; display: flex; justify-content: center; }
+.profile .prof-fs-cell .tile { display: flex; width: 100%; max-width: 100px; }
+.profile .prof-fs-cell .tile-name { max-width: 100%; min-height: 2.3em; display: flex; align-items: flex-end; justify-content: center; overflow-wrap: anywhere; }
+.profile .prof-fs-cell .pic-md { width: 100%; max-width: 90px; height: auto; aspect-ratio: 1 / 1; }
+.profile .prof-fs-others { margin: 0; }
+.profile .prof-empty { margin: 4px 0 8px; font-weight: bold; }
+
+/* Friends Comments */
+.profile .prof-c-count { margin: 0 0 6px; font-size: 11px; }
+.profile table.prof-comment { width: 100%; border-collapse: separate; border-spacing: 0; margin: 0 0 6px; table-layout: fixed; }
+.profile table.prof-comment td { vertical-align: top; padding: 6px; font-size: 11px; }
+.profile .prof-c-left { width: 110px; background: #FFCC99; text-align: center; border: 1px solid #FFFFFF; }
+.profile .prof-c-left a { display: block; }
+.profile .prof-c-who { font-weight: bold; margin: 0 0 4px; overflow-wrap: anywhere; text-decoration: underline; }
+.profile .prof-c-pic .pic { margin: 0 auto; }
+.profile .prof-c-pic:hover { text-decoration: none; }
+.profile .prof-c-right { background: #FFF1E3; border: 1px solid #FFFFFF; overflow-wrap: anywhere; }
+.profile .prof-c-date { font-weight: bold; margin: 0 0 4px; }
+.profile .prof-c-text { margin: 0 0 6px; }
+.profile .prof-rate { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; font-size: 10px; }
+.profile .prof-rate-q { font-weight: bold; color: #666666; }
+.profile .prof-rate-btn { font-size: 10px; padding: 1px 8px; }
+.profile .prof-rate-btn.prof-rate-yes { background: #33CC33; color: #fff; border-color: #1F8A1F; }
+.profile .prof-rate-btn.prof-rate-no { background: #CC0000; color: #fff; border-color: #880000; }
+
+@media (max-width: 640px) {
+  .profile .prof-fs-grid { gap: 6px 4px; }
+  .profile .prof-fs-cell .pic-md .pic-initials { font-size: 22px; }
+  .profile .prof-fs-cell .pic-md .pic-cat { font-size: 7px; }
+  .profile .prof-c-left { width: 86px; padding: 4px; }
+  .profile .prof-extended { font-size: 13px; }
+}

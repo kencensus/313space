@@ -1,0 +1,49 @@
+/* 313Space — Owner mode (.owner) + Impact dashboard (.impact) */
+
+/* ---------- Owner mode ---------- */
+.owner .owner-paths { display: flex; gap: 10px; margin: 8px 0; }
+.owner .owner-paths .btn-big { flex: 1 1 0; min-width: 0; }
+.owner .owner-path-active { outline: 3px solid #FFCC00; outline-offset: 1px; }
+.owner .owner-timer-line { margin: 6px 0 0; }
+.owner .owner-timer { font: bold 14px "Courier New", monospace; background: #000; color: #33FF33; padding: 2px 6px; border: 1px solid #333; display: inline-block; }
+.owner .owner-panels { display: flex; gap: 10px; align-items: flex-start; }
+.owner .owner-panels > .box { flex: 1 1 0; min-width: 0; }
+.owner .owner-selected { list-style: none; margin: 0; padding: 0; }
+.owner .owner-item { display: flex; align-items: center; gap: 6px; padding: 3px 0; border-bottom: 1px dotted #B1D0F0; }
+.owner .owner-pos { font-weight: bold; color: #FF6600; width: 18px; flex: 0 0 18px; text-align: right; }
+.owner .owner-item .pic { flex: 0 0 auto; }
+.owner .owner-item-name { flex: 1 1 auto; min-width: 0; font-weight: bold; word-wrap: break-word; overflow-wrap: anywhere; }
+.owner .owner-item-btns { flex: 0 0 auto; display: flex; gap: 2px; }
+.owner .owner-item-btns .btn { padding: 2px 6px; min-width: 26px; min-height: 26px; }
+.owner .owner-empty { padding: 6px 0; }
+.owner .owner-filter { width: 100%; margin: 0 0 6px; }
+.owner .owner-checklist { list-style: none; margin: 0; padding: 0; max-height: 360px; overflow: auto; border: 1px solid #B1D0F0; }
+.owner .owner-row { padding: 4px 6px; border-bottom: 1px dotted #B1D0F0; }
+.owner .owner-row[hidden] { display: none; }
+.owner .owner-row label { display: block; cursor: pointer; overflow-wrap: anywhere; }
+.owner .owner-row input[disabled] + .owner-row-name { color: #999; }
+.owner .owner-row-name { font-weight: bold; color: #003399; }
+.owner .owner-aipick { display: inline-block; font-size: 9px; font-weight: bold; color: #6633CC; background: #F0E8FF; border: 1px solid #6633CC; padding: 0 3px; border-radius: 2px; vertical-align: middle; }
+.owner .owner-actions .btn-big[disabled] { background: #CCCCCC; border-color: #999; color: #666; cursor: not-allowed; }
+.owner .owner-note { margin-top: 8px; }
+@media (max-width: 640px) {
+  .owner .owner-paths, .owner .owner-panels { flex-direction: column; align-items: stretch; }
+  .owner .owner-paths .btn-big { flex: 0 0 auto; width: 100%; }
+  .owner .owner-panels > .box { flex: 0 0 auto; width: 100%; }
+}
+
+/* ---------- Impact dashboard ---------- */
+.impact .impact-grid { display: flex; gap: 10px; align-items: flex-start; }
+.impact .impact-col { flex: 1 1 0; min-width: 0; }
+.impact table.mys .lbl { width: 45%; }
+.impact table.mys td { overflow-wrap: anywhere; }
+.impact .impact-ok { color: #1F7A1F; font-weight: bold; }
+.impact .impact-no { color: #CC0000; font-weight: bold; }
+.impact .impact-proj { border-color: #996600; }
+.impact .impact-proj > .box-head { background: #FFF2CC; color: #996600; }
+.impact .impact-text { display: block; width: 100%; margin-top: 4px; font: 11px "Courier New", monospace; resize: vertical; }
+.impact .impact-armed { background: #FFCCCC; border-color: #CC0000; color: #CC0000; }
+@media (max-width: 640px) {
+  .impact .impact-grid { flex-direction: column; align-items: stretch; }
+  .impact .impact-col { flex: 0 0 auto; width: 100%; }
+}
