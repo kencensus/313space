@@ -37,7 +37,7 @@ Every number on the page is labeled **MEASURED** (computed live from this device
 ## Decisions & assumptions
 
 - Plain `<script>` tags (no ES modules) so it runs from `file://`. All state lives in localStorage, every access is wrapped in try/catch, and it falls back to memory if storage is blocked.
-- No photos: each profile pic is a colored square with the business's initials and category. "313Space" is an original wordmark. No MySpace logos or assets are used.
+- Profile pics are original illustrations: each business gets a colored square with category line-art (coffee cup, vinyl record, book stack and so on), its initials and its category. Where a freely licensed photo verified to show that specific business exists on Wikimedia Commons, `data/images.js` adds it, credited on the profile. If a photo fails to load (e.g. offline), the illustration shows instead. "313Space" is an original wordmark. No MySpace logos or assets are used.
 - No profile song, music player or audio anywhere.
 - Contacting-box buttons (Add to Friends, etc.) only show playful toasts.
 - When an owner picks a business the AI didn't suggest, its Friends Comment reads "Hand-picked by the owner of …" instead of inventing a reason.
@@ -45,3 +45,15 @@ Every number on the page is labeled **MEASURED** (computed live from this device
 - Quiz timer starts when the quiz page renders and stops when results show.
 - "Good match?" ratings are stored per page load. Several testers sharing one device don't overwrite each other, and changing your vote within a visit replaces it. The Impact page ignores stored data for businesses that aren't in the current data file.
 - Quiz free text matches whole tag words only (e.g. "vegan" or "cozy"), and filler words like "and" or "for" are ignored.
+
+## Photo credits
+
+Profile photos are hotlinked from Wikimedia Commons under their free licenses:
+
+- Source Booksellers: "What an amazing selection at Source Booksellers in Detroit!" by Senator Stabenow, CC BY 2.0
+- John K. King Used & Rare Books: "John K. King Books (exterior)" by Mx. Granger, CC0
+- Cliff Bell's: "Cliff Bell's" by Mx. Granger, CC0
+- Garden Bowl: "Detroit December 2018 16 (Garden Bowl)" by Michael Barera, CC BY-SA 4.0
+- Redford Theatre: "RedfordTheatreMarquee" by Dave Parker, CC BY 3.0
+
+All other profile pics are original illustrations.
