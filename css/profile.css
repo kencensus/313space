@@ -7,7 +7,7 @@
 .profile .prof-picbox { display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-start; margin: 0 0 8px; }
 .profile .prof-pic { flex: 0 0 auto; }
 .profile .prof-pic .pic-lg { width: 150px; height: 150px; }
-.profile .prof-pic .pic-lg .pic-initials { font-size: 50px; }
+.profile .prof-pic .pic-lg .pic-initials { font-size: 30px; }
 .profile .prof-details { flex: 1 1 100px; min-width: 100px; font-size: 11px; display: flex; flex-direction: column; gap: 5px; overflow-wrap: anywhere; }
 .profile .prof-headline { font-style: italic; font-weight: bold; }
 .profile .prof-viewmy { margin: 0 0 8px; font-size: 11px; }
@@ -81,7 +81,7 @@
 
 @media (max-width: 640px) {
   .profile .prof-fs-grid { gap: 6px 4px; }
-  .profile .prof-fs-cell .pic-md .pic-initials { font-size: 22px; }
+  .profile .prof-fs-cell .pic-md .pic-initials { font-size: 14px; }
   .profile .prof-fs-cell .pic-md .pic-cat { font-size: 7px; }
   .profile .prof-c-left { width: 86px; padding: 4px; }
   .profile .prof-extended { font-size: 13px; }

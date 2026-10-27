@@ -106,7 +106,7 @@
       '<div class="quiz-alert" role="status">' +
         '<div class="quiz-alert-title">You have 1 new friend request!</div>' +
         '<div class="quiz-match">' +
-          '<a class="quiz-match-pic" href="' + Data.profileHref(b.id) + '">' + Data.picHTML(b, "lg") + '</a>' +
+          '<a class="quiz-match-pic" href="' + Data.profileHref(b.id) + '">' + Data.picHTML(b, "lg") + '</a>' + Data.photoCreditHTML(b) +
           '<div class="quiz-match-info">' +
             '<h2><a href="' + Data.profileHref(b.id) + '">' + esc(b.name) + '</a></h2>' +
             (b.headline ? '<p class="quiz-headline">&quot;' + esc(b.headline) + '&quot;</p>' : '') +

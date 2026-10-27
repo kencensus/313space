@@ -49,7 +49,7 @@
       '<h1 class="prof-name"><span class="glitter">' + name + '</span></h1>' +
 
       '<div class="prof-picbox">' +
-        '<div class="prof-pic">' + Data.picHTML(b, "lg") + '</div>' +
+        '<div class="prof-pic">' + Data.picHTML(b, "lg") + Data.photoCreditHTML(b) + '</div>' +
         '<div class="prof-details">' +
           (b.headline ? '<div class="prof-headline">&ldquo;' + esc(b.headline) + '&rdquo;</div>' : "") +
           (b.mood ? '<div class="prof-mood"><b>Mood:</b> ' + esc(b.mood) + '</div>' : "") +
