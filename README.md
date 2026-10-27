@@ -37,7 +37,7 @@ Every number on the page is labeled **MEASURED** (computed live from this device
 ## Decisions & assumptions
 
 - Plain `<script>` tags (no ES modules) so it runs from `file://`. All state lives in localStorage, every access is wrapped in try/catch, and it falls back to memory if storage is blocked.
-- Profile pics are original illustrations: each business gets a colored square with category line-art (coffee cup, vinyl record, book stack and so on), its initials and its category. Where a freely licensed photo verified to show that specific business exists on Wikimedia Commons, `data/images.js` adds it, credited on the profile. If a photo fails to load (e.g. offline), the illustration shows instead. "313Space" is an original wordmark. No MySpace logos or assets are used.
+- Profile pics are original illustrations: each business gets a colored square with category line-art (coffee cup, vinyl record, book stack and so on), its initials and its category. Where a freely licensed photo verified to show that specific business exists on Wikimedia Commons, `data/images.js` adds it, credited on the profile. If an image fails to load, the illustration shows instead. "313Space" is an original wordmark. No MySpace logos or assets are used.
 - No profile song, music player or audio anywhere.
 - Contacting-box buttons (Add to Friends, etc.) only show playful toasts.
 - When an owner picks a business the AI didn't suggest, its Friends Comment reads "Hand-picked by the owner of …" instead of inventing a reason.
@@ -48,7 +48,7 @@ Every number on the page is labeled **MEASURED** (computed live from this device
 
 ## Photo credits
 
-Profile photos are hotlinked from Wikimedia Commons under their free licenses:
+Profile photos come from Wikimedia Commons under their free licenses (copies in `images/`):
 
 - Source Booksellers: "What an amazing selection at Source Booksellers in Detroit!" by Senator Stabenow, CC BY 2.0
 - John K. King Used & Rare Books: "John K. King Books (exterior)" by Mx. Granger, CC0
@@ -56,6 +56,6 @@ Profile photos are hotlinked from Wikimedia Commons under their free licenses:
 - Garden Bowl: "Detroit December 2018 16 (Garden Bowl)" by Michael Barera, CC BY-SA 4.0
 - Redford Theatre: "RedfordTheatreMarquee" by Dave Parker, CC BY 3.0
 
-Logos or link-preview images for Third Man Records, Submerge, Supino Pizzeria, Taqueria El Rey, Batch Brewing, Planet Ant, Detroit Artists Market, Signal-Return, Good Cakes and Bakes, Sweet Potato Sensations, Flamingo Vintage and Pure Detroit are hotlinked from each business's own official website. Each is credited and linked on its profile.
+Logos or link-preview images for Third Man Records, Submerge, Supino Pizzeria, Taqueria El Rey, Batch Brewing, Planet Ant, Detroit Artists Market, Signal-Return, Good Cakes and Bakes, Sweet Potato Sensations, Flamingo Vintage and Pure Detroit are copied from each business's own official website (in `images/`). Each is credited and linked on its profile.
 
 Anthology Coffee, The Red Hook, New Palace Bakery and Pages Bookshop use original illustrations.
