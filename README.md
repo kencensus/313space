@@ -56,4 +56,6 @@ Profile photos are hotlinked from Wikimedia Commons under their free licenses:
 - Garden Bowl: "Detroit December 2018 16 (Garden Bowl)" by Michael Barera, CC BY-SA 4.0
 - Redford Theatre: "RedfordTheatreMarquee" by Dave Parker, CC BY 3.0
 
-All other profile pics are original illustrations.
+Logos or link-preview images for Third Man Records, Submerge, Supino Pizzeria, Taqueria El Rey, Batch Brewing, Planet Ant, Detroit Artists Market, Signal-Return, Good Cakes and Bakes, Sweet Potato Sensations, Flamingo Vintage and Pure Detroit are hotlinked from each business's own official website. Each is credited and linked on its profile.
+
+Anthology Coffee, The Red Hook, New Palace Bakery and Pages Bookshop use original illustrations.

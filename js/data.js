@@ -54,6 +54,9 @@
   function photoCreditHTML(b) {
     var im = b && imageFor(b.id);
     if (!im) return "";
+    if (im.via) {
+      return '<div class="pic-credit">' + (im.kind === "logo" ? "Logo" : "Image") + ' from <a href="' + esc(im.page) + '" target="_blank" rel="noopener">' + esc(im.via) + '</a></div>';
+    }
     return '<div class="pic-credit">Photo: ' + (im.page ? '<a href="' + esc(im.page) + '" target="_blank" rel="noopener">' : "") +
       esc(im.artist || "Wikimedia Commons") + (im.page ? "</a>" : "") + (im.license ? " (" + esc(im.license) + ")" : "") + ", via Wikimedia Commons</div>";
   }
@@ -62,11 +65,11 @@
   function picHTML(b, size) {
     if (!b) return "";
     var im = imageFor(b.id);
-    return '<div class="pic pic-' + (size || "md") + (im ? " has-photo" : "") + '" style="background:' + colorFor(b.id) + '" aria-hidden="true">' +
+    return '<div class="pic pic-' + (size || "md") + (im ? " has-photo" + (im.kind === "logo" ? " photo-logo" : "") : "") + '" style="background:' + colorFor(b.id) + '" aria-hidden="true">' +
       artSVG(b.category) +
       '<span class="pic-initials">' + esc(initials(b.name)) + '</span>' +
       '<span class="pic-cat">' + esc(b.category) + '</span>' +
-      (im ? '<img class="pic-photo" src="' + esc(im.src) + '" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.remove(\'has-photo\');this.remove()">' : "") +
+      (im ? '<img class="pic-photo" src="' + esc(im.src) + '"' + (im.bg ? ' style="background:' + esc(im.bg) + '"' : "") + ' alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.remove(\'has-photo\');this.remove()">' : "") +
       '</div>';
   }
   /* Linked tile: name above pic, both link to profile. */
